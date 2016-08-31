@@ -68,21 +68,22 @@
                                     <div class="modal-body">
                                         <div class="input-group input-group-lg">
                                             <span class="input-group-addon">@</span>
-                                            <input type="text" class="form-control" placeholder="Email" id="email">
+                                            <input type="text" class="form-control" placeholder="Email" type="form"
+                                                   id="email">
                                         </div>
                                         <br>
                                         <div class="input-group input-group-lg">
 													<span class="input-group-addon"><i class="fa fa-lock"
                                                                                        aria-hidden="true"></i>
 													</span>
-                                            <input type="text" class="form-control" placeholder="Password"
+                                            <input type="text" class="form-control" type="form" placeholder="Password"
                                                    id="password">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть
                                         </button>
-                                        <button type="button" id="log-in button" class="btn btn-primary">Войти
+                                        <button onclick="main.log_in()" class="btn btn-primary">Войти
                                         </button>
                                     </div>
                                 </div>
@@ -163,31 +164,56 @@
             <div class="row">
                 <ul class="nav nav-pills nav-stacked">
                     <li role="presentation">
-                        <a href="#">
+                        <a href="#" onClick="$('#request_central_panel').hide();
+                        $('#news_central_panel').show();
+                        $('#map_central_panel').hide();
+                        $('#find_doctor_central_panel').hide();
+                        $('#order_central_panel').hide();
+                        $('#resp_central_panel').hide()">
                             <h4 class="list-group-item-heading">Главная</h4>
                             <p class="list-group-item-text">Переход на главную страницу</p>
                         </a>
                     </li>
                     <li role="presentation">
-                        <a href="#">
+                        <a href="#" onClick="$('#request_central_panel').show();
+                        $('#news_central_panel').hide();
+                        $('#map_central_panel').hide();
+                        $('#find_doctor_central_panel').hide();
+                        $('#order_central_panel').hide();
+                        $('#resp_central_panel').hide()">
                             <h4 class="list-group-item-heading">Онлайн обследование</h4>
                             <p class="list-group-item-text">Автоматическая система диагностики </p>
                         </a>
                     </li>
                     <li role="presentation">
-                        <a href="#">
+                        <a href="#" onClick="$('#request_central_panel').hide();
+                        $('#news_central_panel').hide();
+                        $('#map_central_panel').hide();
+                        $('#find_doctor_central_panel').show();
+                        $('#order_central_panel').hide();
+                        $('#resp_central_panel').hide()">
                             <h4 class="list-group-item-heading">Найти специалиста</h4>
-                            <p class="list-group-item-text">Поиск консультачии онлайн </p>
+                            <p class="list-group-item-text">Поиск консультации онлайн </p>
                         </a>
                     </li>
                     <li role="presentation">
-                        <a href="#">
+                        <a href="#" onClick="$('#request_central_panel').hide();
+                        $('#news_central_panel').hide();
+                        $('#map_central_panel').show();
+                        $('#find_doctor_central_panel').hide();
+                        $('#order_central_panel').hide();
+                        $('#resp_central_panel').hide()">
                             <h4 class="list-group-item-heading ">Аптеки поблизости</h4>
                             <p class="list-group-item-text">Просмотр ближайцших аптек </p>
                         </a>
                     </li>
                     <li role="presentation">
-                        <a href="#">
+                        <a href="#" onClick="$('#request_central_panel').hide();
+                        $('#news_central_panel').hide();
+                        $('#map_central_panel').hide();
+                        $('#find_doctor_central_panel').hide();
+                        $('#order_central_panel').show();
+                        $('#resp_central_panel').hide()">
                             <h4 class="list-group-item-heading">Заказ лекарств</h4>
                             <p class="list-group-item-text">Нужные лекарства с доставкой </p>
                         </a>
@@ -198,74 +224,145 @@
         <br>
         <div class="col-md-1">
         </div>
-        <div class="request_central_panel">
+        <div class="request_central_panel" id="request_central_panel" style="display:none;">
             <div class="col-md-6">
-                    <div class="row">
-                        <form class="form-horizontal">
-
-                            <div class="input-group input-group-lg">
+                <div class="row">
+                    <form class="form-horizontal">
+                        <div class="input-group input-group-lg">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-plus" aria-hidden="true">
                                     </span>
                                 </span>
-                                <input type="text" class="form-control" placeholder="Ваш симптом №1" id="symptom1">
-                            </div>
-                            <br>
-                            <div class="input-group input-group-lg">
+                            <input type="text" class="form-control" placeholder="Ваш симптом №1" id="symptom1">
+                        </div>
+                        <br>
+                        <div class="input-group input-group-lg">
                                 <span class="input-group-addon">
                                      <span class="glyphicon glyphicon-plus" aria-hidden="true">
                                     </span>
                                 </span>
-                                <input type="text" class="form-control" placeholder="Ваш симптом №2" id="symptom2">
-                            </div>
-                            <br>
-                            <div class="input-group input-group-lg">
+                            <input type="text" class="form-control" placeholder="Ваш симптом №2" id="symptom2">
+                        </div>
+                        <br>
+                        <div class="input-group input-group-lg">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-plus" aria-hidden="true">
                                     </span>
                                 </span>
-                                <input type="text" class="form-control" placeholder="Ваш симптом №3" id="symptom3">
-                            </div>
-                            <br>
-                            <div class="input-group input-group-lg">
+                            <input type="text" class="form-control" placeholder="Ваш симптом №3" id="symptom3">
+                        </div>
+                        <br>
+                        <div class="input-group input-group-lg">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-plus" aria-hidden="true">
                                     </span>
                                 </span>
-                                <input type="text" class="form-control" placeholder="Ваш симптом №4" id="symptom4">
-                            </div>
-                            <br>
-                            <div class="input-group input-group-lg">
+                            <input type="text" class="form-control" placeholder="Ваш симптом №4" id="symptom4">
+                        </div>
+                        <br>
+                        <div class="input-group input-group-lg">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-plus" aria-hidden="true">
                                     </span>
                                 </span>
-                                <input type="text" class="form-control" placeholder="Ваш симптом №5" id="symptom5">
-                            </div>
+                            <input type="text" class="form-control" placeholder="Ваш симптом №5" id="symptom5">
+                        </div>
 
-                            <br>
-                            <button type="request_disease" class="btn" id="btn_diagnostic">Провести
-                                диагностику
-                            </button>
+                        <br>
+                        <button type="request_disease" class="btn" id="btn_diagnostic"
+                                onClick="$('#request_central_panel').hide();
+                        $('#news_central_panel').hide();
+                        $('#map_central_panel').hide();
+                        $('#find_doctor_central_panel').hide();
+                        $('#order_central_panel').hide();
+                        $('#resp_central_panel').show()">
+                            Провести
+                            диагностику
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="map_central_panel" id="map_central_panel" style="display:none;">
+            <div class="col-md-6">
+                <div class="row">
+                    <img src="/images/map.png" alt="map" width="90%">
+                </div>
+            </div>
+        </div>
+        <div class="resp_central_panel" id="resp_central_panel" style="display:none;">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="bs-example" data-example-id="body-copy">
+                        <p>Nullam quis risus eget urna mollis ornare vel eu <br>
+                            leo. Cum sociis natoque penatibus et magnis dis <br>
+                            parturient montes, nascetur ridiculus mus. Nullam <br>
+                            id dolor id nibh ultricies vehicula.
+                        </p>
+                        <p>Cum sociis natoque penatibus et magnis dis <br>
+                            parturient montes, nascetur ridiculus mus. Donec <br>
+                            ullamcorper nulla non metus auctor fringilla. Duis mollis, <br>
+                            est non commodo luctus, nisi erat porttitor ligula,<br>
+                            eget lacinia odio sem nec elit. Donec ullamcorper <br>
+                            nulla non metus auctor fringilla.
+                        </p>
+                        <p>Maecenas sed diam eget risus varius blandit <br>
+                            sit amet non magna. Donec id elit non mi <br>
+                            porta gravida at eget metus. Duis mollis, <br>
+                            est non commodo luctus, nisi erat porttitor <br>
+                            ligula, eget lacinia odio sem nec elit.
+                        </p>
                     </div>
-                </form>
+                </div>
+            </div>
+        </div>
+        <div class="news_central_panel" id="news_central_panel" style="display:block;">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="news_panel">
+                        <img src="/images/news.jpg" alt="">
+                        <p>Речь идет о зеленом чае. Лечебные свойства этого напитка известны издревле. <br>
+                            Зеленый чай укрепляет иммунную и сердечно-сосудистую системы, он полезен <br>
+                            для мозга и защищает от онкозаболеваний.<br>
+                            Однако результаты нового исследования показали, что высокая дозировка <br>
+                            зеленого чая негативно отражается на женском здоровье, в частности на репродуктивной
+                            системе.<br>
+                            Ученые из Калифорнийского Университета исследовали специальный вид мушек <br>
+                            Drosophila. Выяснилось, что злоупотребление этим напитком приводило к <br>
+                            снижению фертильности. Также эксперты рекомендуют не переусердствовать <br>
+                            с приемом БАДов, содержащих экстракт зеленого чая.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="find_doctor_central_panel" id="find_doctor_central_panel" style="display:none;">
+            <div class="col-md-6">
+                <div class="row">
+                    find_doctor
+                </div>
+            </div>
+        </div>
+        <div class="order_central_panel" id="order_central_panel" style="display:none;">
+            <div class="col-md-6">
+                <div class="row">
+                    ...order
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="container">
+
+                <p>
+                    Some elements
+                </p>
             </div>
         </div>
     </div>
 </div>
-<div class="col-md-12">
-    <div class="row">
-        <div class="container">
 
-            <p>
-                Some elements
-            </p>
-        </div>
-    </div>
-</div>
-</div>
-</div>
-</div>
 <div class="lower-visual-block">
     <div class="container">
         <div class="col-md-12">
@@ -274,8 +371,10 @@
                     <div class="item">
                         <div id="tb-testimonial_1" class="testimonial testimonial-default-filled">
                             <div class="testimonial-section">
-                                Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing sit
-                                amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem ipsum
+                                Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing
+                                sit
+                                amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem
+                                ipsum
                                 dolor met.
                             </div>
                             <div class="testimonial-desc">
@@ -292,8 +391,10 @@
                     <div class="item">
                         <div id="tb-testimonial_2" class="testimonial testimonial-default-filled">
                             <div class="testimonial-section">
-                                Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing sit
-                                amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem ipsum
+                                Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing
+                                sit
+                                amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem
+                                ipsum
                                 dolor met.
                             </div>
                             <div class="testimonial-desc">
@@ -310,8 +411,10 @@
                     <div class="item">
                         <div id="tb-testimonial_3" class="testimonial testimonial-default-filled">
                             <div class="testimonial-section">
-                                Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing sit
-                                amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem ipsum
+                                Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing
+                                sit
+                                amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem
+                                ipsum
                                 dolor met.
                             </div>
                             <div class="testimonial-desc">
@@ -328,8 +431,10 @@
                     <div class="item">
                         <div id="tb-testimonial_4" class="testimonial testimonial-default-filled">
                             <div class="testimonial-section">
-                                Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing sit
-                                amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem ipsum
+                                Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing
+                                sit
+                                amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem
+                                ipsum
                                 dolor met.
                             </div>
                             <div class="testimonial-desc">
@@ -346,8 +451,10 @@
                     <div class="item">
                         <div id="tb-testimonial_5" class="testimonial testimonial-default-filled">
                             <div class="testimonial-section">
-                                Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing sit
-                                amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem ipsum
+                                Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing
+                                sit
+                                amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem
+                                ipsum
                                 dolor met.
                             </div>
                             <div class="testimonial-desc">
@@ -364,8 +471,10 @@
                     <div class="item">
                         <div id="tb-testimonial_6" class="testimonial testimonial-default-filled">
                             <div class="testimonial-section">
-                                Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing sit
-                                amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem ipsum
+                                Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing
+                                sit
+                                amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem
+                                ipsum
                                 dolor met.
                             </div>
                             <div class="testimonial-desc">
@@ -382,8 +491,10 @@
                     <div class="item">
                         <div id="tb-testimonial_7" class="testimonial testimonial-default-filled">
                             <div class="testimonial-section">
-                                Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing sit
-                                amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem ipsum
+                                Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing
+                                sit
+                                amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem
+                                ipsum
                                 dolor met.
                             </div>
                             <div class="testimonial-desc">
@@ -400,8 +511,10 @@
                     <div class="item">
                         <div id="tb-testimonial_8" class="testimonial testimonial-default-filled">
                             <div class="testimonial-section">
-                                Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing sit
-                                amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem ipsum
+                                Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing
+                                sit
+                                amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem
+                                ipsum
                                 dolor met.
                             </div>
                             <div class="testimonial-desc">

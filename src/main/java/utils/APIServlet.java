@@ -9,7 +9,7 @@ import javax.servlet.annotation.WebServlet;
 /**
  * Created by Nikita on 20.08.2016.
  */
-@WebServlet(urlPatterns = "/lol", name = "register")
+
 public class APIServlet {
     public static final JSONStreamAware ERROR_INCORRECT_REQUEST;
 
@@ -19,4 +19,5 @@ public class APIServlet {
         response.put("errorDescription", "Incorrect request");
         ERROR_INCORRECT_REQUEST = JSON.prepare(response);
     }
+
 }

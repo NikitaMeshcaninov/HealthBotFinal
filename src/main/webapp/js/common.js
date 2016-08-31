@@ -82,6 +82,8 @@ $(document).ready(function() {
 		});
 		return false;
 	});
+	
+	
 	$(document).ready(function() {
 
 		$("#owl-example").owlCarousel();
@@ -98,11 +100,41 @@ $(document).ready(function() {
  
   });
 
-	$("#123").onclick(function() {
-		$("#request_central_panel").css("visibility", "hidden")
 
-	});
 	
 
 
+
 });
+
+var main = {
+	registration: function () {
+		var log = document.getElementById("logReg").value;
+		var mail = document.getElementById("mailReg").value;
+		var pass = document.getElementById("passReg").value;
+		$.ajax({
+			type: "POST",
+			url: "/lol",
+			data: {requestType: "registration", login: log, password: pass, email: mail},
+			success: function (data) {
+				console.log(data);
+			}
+		});
+	},
+
+	log_in: function () {
+		alert("Im starting!!!")
+		var log = document.getElementById("email").value;
+		var pass = document.getElementById("password").value;
+		$.ajax({
+			type: "POST",
+			url: "/lol",
+			data: {requestType: "login", apiRequestHandler:"APILoginHandler", login: log, password: pass},
+			success: function (data) {
+				alert("Success!");
+			}
+		});
+	}
+
+
+};
