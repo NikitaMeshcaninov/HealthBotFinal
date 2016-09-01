@@ -101,12 +101,12 @@ public class HealthEngine {
         String symptomName = null;
 
         if (!symptomNameList.get(0).equals(""))
-            symptomName = symptomNameList.get(0);
+            symptomName = "'" + symptomNameList.get(0) + "'";
 
 
         for (int i = 1; symptomNameList.size() > i; i++) {
             if (!symptomNameList.get(i).equals("")){
-            symptomName = symptomName + " OR symptom.symptomName = " + symptomNameList.get(i);}
+            symptomName = symptomName + " OR symptom.symptomName = '" + symptomNameList.get(i) + "'";}
         }
         System.out.println(symptomName.toString());
         try {

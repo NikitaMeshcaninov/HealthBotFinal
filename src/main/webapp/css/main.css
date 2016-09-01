@@ -82,6 +82,12 @@ body {
     box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
 
+
+.resp_container{
+    background-color: #337AB7;
+    color: #fff;
+}
+
 .request_central_panel{
     visibility: visible;
 }

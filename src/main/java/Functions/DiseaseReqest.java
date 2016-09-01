@@ -1,6 +1,7 @@
 package Functions;
 
 import engine.HealthEngine;
+import entities.Disease;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONStreamAware;
 import utils.APIHandlerServlet;
@@ -42,7 +43,11 @@ public class DiseaseReqest extends APIHandlerServlet.APIRequestHandler {
         HealthEngine engine = new HealthEngine();
 
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("resp",engine.findUserDisease(symptomList));
+        System.out.println(engine.findUserDisease(symptomList).get(0).toString());
+        jsonObject.put("resp","Судя по симптомам вы страдаете от " +
+                ((Disease)engine.findUserDisease(symptomList).get(0)).getDiseaseName() +
+                " советуем вам обратиться к " +
+                ((Disease)engine.findUserDisease(symptomList).get(0)).getSpecialistType());
 
         return jsonObject;
     }
