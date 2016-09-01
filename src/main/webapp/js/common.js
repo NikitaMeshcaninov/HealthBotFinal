@@ -115,6 +115,7 @@ var main = {
 		$.ajax({
 			type: "POST",
 			url: "/lol",
+			dataType: "json",
 			data: {requestType: "registration", login: log, password: pass, email: mail},
 			success: function (data) {
 				console.log(data);
@@ -129,9 +130,34 @@ var main = {
 		$.ajax({
 			type: "POST",
 			url: "/lol",
-			data: {requestType: "login", apiRequestHandler:"APILoginHandler", login: log, password: pass},
+			dataType: "json",
+			data: {requestType: "login", login: log, password: pass},
 			success: function (data) {
-				alert("Success!");
+				document.getElementById("email").value = data.blablabla;
+				console.log(data.requestProcessingTime);
+			}
+		});
+	},
+
+	diseaseRequest: function () {
+		var symptom1 = document.getElementById("symptom1").value;
+		var symptom2 = document.getElementById("symptom2").value;
+		var symptom3 = document.getElementById("symptom3").value;
+		var symptom4 = document.getElementById("symptom4").value;
+		var symptom5 = document.getElementById("symptom5").value;
+		$.ajax({
+			type: "POST",
+			url: "/lol",
+			dataType: "json",
+			data: {requestType: "diseaserequest",
+				symptom1: symptom1,
+				symptom2: symptom2,
+				symptom3: symptom3,
+				symptom4: symptom4,
+				symptom5: symptom5,},
+			success: function (data) {
+				document.getElementById("resp").value = data.resp;
+				console.log(data.requestProcessingTime);
 			}
 		});
 	}

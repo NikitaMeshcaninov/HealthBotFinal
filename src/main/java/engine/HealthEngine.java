@@ -98,10 +98,17 @@ public class HealthEngine {
         Session session = null;
         List t = null;
         Disease result = null;
-        String symptomName = symptomNameList.get(0);
+        String symptomName = null;
+
+        if (!symptomNameList.get(0).equals(""))
+            symptomName = symptomNameList.get(0);
+
+
         for (int i = 1; symptomNameList.size() > i; i++) {
-            symptomName = symptomName + " OR symptom.symptomName = " + symptomNameList.get(i);
+            if (!symptomNameList.get(i).equals("")){
+            symptomName = symptomName + " OR symptom.symptomName = " + symptomNameList.get(i);}
         }
+        System.out.println(symptomName.toString());
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();

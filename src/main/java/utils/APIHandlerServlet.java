@@ -1,6 +1,7 @@
 package utils;
 
-import utils.JSON;
+import Functions.DiseaseReqest;
+import Functions.Login;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONStreamAware;
 
@@ -13,7 +14,6 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.IllegalFormatException;
 import java.util.Map;
 
 import static utils.APIServlet.ERROR_INCORRECT_REQUEST;
@@ -34,6 +34,9 @@ public class APIHandlerServlet extends HttpServlet {
     static {
         Map<String, APIRequestHandler> map = new HashMap<>();
 
+        map.put("login", Login.getInstance());
+        map.put("diseaserequest", DiseaseReqest.getInstance());
+
         apiRequestHandlers = Collections.unmodifiableMap(map);
     }
 
@@ -53,8 +56,7 @@ public class APIHandlerServlet extends HttpServlet {
     }
 
     private void process(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        System.out.println("here!");
-        System.out.println("here parama!" + req.getParameter("password"));
+
         resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate, private");
         resp.setHeader("Pragma", "no-cache");
         resp.setHeader("Access-Control-Allow-Origin", "*");

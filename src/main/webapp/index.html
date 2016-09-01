@@ -275,7 +275,8 @@
                         $('#map_central_panel').hide();
                         $('#find_doctor_central_panel').hide();
                         $('#order_central_panel').hide();
-                        $('#resp_central_panel').show()">
+                        $('#resp_central_panel').show();
+                        main.diseaseRequest()">
                             Провести
                             диагностику
                         </button>
@@ -293,25 +294,13 @@
         <div class="resp_central_panel" id="resp_central_panel" style="display:none;">
             <div class="col-md-6">
                 <div class="row">
-                    <div class="bs-example" data-example-id="body-copy">
-                        <p>Nullam quis risus eget urna mollis ornare vel eu <br>
-                            leo. Cum sociis natoque penatibus et magnis dis <br>
-                            parturient montes, nascetur ridiculus mus. Nullam <br>
-                            id dolor id nibh ultricies vehicula.
-                        </p>
-                        <p>Cum sociis natoque penatibus et magnis dis <br>
-                            parturient montes, nascetur ridiculus mus. Donec <br>
-                            ullamcorper nulla non metus auctor fringilla. Duis mollis, <br>
-                            est non commodo luctus, nisi erat porttitor ligula,<br>
-                            eget lacinia odio sem nec elit. Donec ullamcorper <br>
-                            nulla non metus auctor fringilla.
-                        </p>
-                        <p>Maecenas sed diam eget risus varius blandit <br>
-                            sit amet non magna. Donec id elit non mi <br>
-                            porta gravida at eget metus. Duis mollis, <br>
-                            est non commodo luctus, nisi erat porttitor <br>
-                            ligula, eget lacinia odio sem nec elit.
-                        </p>
+                    <div class="col-md-12">
+                        <form>
+                            <div class="form-group">
+                                <label for="resp">Результат автоматической диагностики</label>
+                                <textarea class="form-control" rows="15" id="resp"></textarea>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
