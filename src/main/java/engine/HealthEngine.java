@@ -97,7 +97,6 @@ public class HealthEngine {
     public List<Disease> findUserDisease(ArrayList<String> symptomNameList) {
         Session session = null;
         List t = null;
-        Disease result = null;
         String symptomName = null;
 
         if (!symptomNameList.get(0).equals(""))
@@ -123,10 +122,7 @@ public class HealthEngine {
                     "WHERE symptom.symptomName =" + symptomName)
                     .setResultTransformer(Transformers.aliasToBean(Disease.class))
                     .list();
-            result = (Disease) t.get(0);
 
-            System.out.println(result.getDiseaseName());
-            System.out.println(result.getSpecialistType());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "ошибка I/O", JOptionPane.OK_OPTION);
         } finally {

@@ -8,6 +8,7 @@ import utils.APIHandlerServlet;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by cube on 20.08.2016.
@@ -31,23 +32,37 @@ public class DiseaseReqest extends APIHandlerServlet.APIRequestHandler {
         System.out.println(request.getParameter("symptom3"));
         System.out.println(request.getParameter("symptom4"));
         System.out.println(request.getParameter("symptom5"));
-
-        ArrayList symptomList = new ArrayList();
-        symptomList.add(request.getParameter("symptom1"));
-        symptomList.add(request.getParameter("symptom2"));
-        symptomList.add(request.getParameter("symptom3"));
-        symptomList.add(request.getParameter("symptom4"));
-        symptomList.add(request.getParameter("symptom5"));
-
-
         HealthEngine engine = new HealthEngine();
-
         JSONObject jsonObject = new JSONObject();
-        System.out.println(engine.findUserDisease(symptomList).get(0).toString());
-        jsonObject.put("resp","Судя по симптомам вы страдаете от " +
-                ((Disease)engine.findUserDisease(symptomList).get(0)).getDiseaseName() +
+        String resp = null;
+        ArrayList symptomList = new ArrayList();
+        List<Disease> usersSiseases = null;
+
+
+        for (int i = 1; i <= 5; i++) {
+            symptomList.add(request.getParameter("symptom" + i));
+            System.out.println(symptomList.toString());
+        }
+        usersSiseases = engine.findUserDisease(symptomList);
+        System.out.println("симптом лист " + symptomList.toString());
+        System.out.println("болезни: " + usersSiseases.toString());
+
+
+        resp = "Судя по симптомам вы страдаете от " +
+                (usersSiseases.get(0)).getDiseaseName() +
                 " советуем вам обратиться к " +
-                ((Disease)engine.findUserDisease(symptomList).get(0)).getSpecialistType());
+                (usersSiseases.get(0)).getSpecialistType() + "<br>";
+
+        for (int i = 1; i < usersSiseases.size(); i++) {
+            resp = resp + "Судя по симптомам вы страдаете от " +
+                    (usersSiseases.get(i)).getDiseaseName() +
+                    " советуем вам обратиться к " +
+                    (usersSiseases.get(i)).getSpecialistType() + "<br>";
+        }
+
+        System.out.println("строка ответ= " + resp.toString());
+
+        jsonObject.put("resp", resp);
 
         return jsonObject;
     }
