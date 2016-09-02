@@ -2,6 +2,7 @@ package Functions;
 
 import engine.HealthEngine;
 import entities.Disease;
+import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONStreamAware;
 import utils.APIHandlerServlet;
@@ -17,7 +18,7 @@ public class DiseaseReqest extends APIHandlerServlet.APIRequestHandler {
 
     public static final DiseaseReqest instance = new DiseaseReqest();
 
-
+    final static Logger logger = Logger.getLogger(DiseaseReqest.class);
     public static DiseaseReqest getInstance() {
         return instance;
     }
@@ -27,11 +28,11 @@ public class DiseaseReqest extends APIHandlerServlet.APIRequestHandler {
 
     @Override
     protected JSONStreamAware processRequest(HttpServletRequest request) throws Exception {
-        System.out.println(request.getParameter("symptom1"));
-        System.out.println(request.getParameter("symptom2"));
-        System.out.println(request.getParameter("symptom3"));
-        System.out.println(request.getParameter("symptom4"));
-        System.out.println(request.getParameter("symptom5"));
+        logger.info(request.getParameter("symptom1"));
+        logger.info(request.getParameter("symptom2"));
+        logger.info(request.getParameter("symptom3"));
+        logger.info(request.getParameter("symptom4"));
+        logger.info(request.getParameter("symptom5"));
         HealthEngine engine = new HealthEngine();
         JSONObject jsonObject = new JSONObject();
         String resp = null;
@@ -44,23 +45,23 @@ public class DiseaseReqest extends APIHandlerServlet.APIRequestHandler {
             System.out.println(symptomList.toString());
         }
         usersSiseases = engine.findUserDisease(symptomList);
-        System.out.println("симптом лист " + symptomList.toString());
-        System.out.println("болезни: " + usersSiseases.toString());
+        logger.info("симптом лист: " + symptomList.toString());
+        logger.info("болезни: " + usersSiseases.toString());
 
 
-        resp = "Судя по симптомам вы страдаете от " +
+        resp = "Возможно вы страдаете от болезни под названием " +
                 (usersSiseases.get(0)).getDiseaseName() +
-                " советуем вам обратиться к " +
-                (usersSiseases.get(0)).getSpecialistType() + "<br>";
+                " советуем вам обратиться к специалисту с специализацией " +
+                (usersSiseases.get(0)).getSpecialistType() + "    <br>    ";
 
         for (int i = 1; i < usersSiseases.size(); i++) {
-            resp = resp + "Судя по симптомам вы страдаете от " +
+            resp = resp + "Возможно вы страдаете от болезни под названием " +
                     (usersSiseases.get(i)).getDiseaseName() +
-                    " советуем вам обратиться к " +
-                    (usersSiseases.get(i)).getSpecialistType() + "<br>";
+                    " советуем вам обратиться к специалисту с специализацией " +
+                    (usersSiseases.get(i)).getSpecialistType() + "    <br>    ";
         }
 
-        System.out.println("строка ответ= " + resp.toString());
+        logger.info("строка ответ= " + resp.toString());
 
         jsonObject.put("resp", resp);
 
