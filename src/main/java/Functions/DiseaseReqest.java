@@ -19,6 +19,7 @@ public class DiseaseReqest extends APIHandlerServlet.APIRequestHandler {
     public static final DiseaseReqest instance = new DiseaseReqest();
 
     final static Logger logger = Logger.getLogger(DiseaseReqest.class);
+
     public static DiseaseReqest getInstance() {
         return instance;
     }
@@ -48,18 +49,23 @@ public class DiseaseReqest extends APIHandlerServlet.APIRequestHandler {
         logger.info("симптом лист: " + symptomList.toString());
         logger.info("болезни: " + usersSiseases.toString());
 
-
-        resp = "Возможно вы страдаете от болезни под названием " +
-                (usersSiseases.get(0)).getDiseaseName() +
-                " советуем вам обратиться к специалисту с специализацией " +
-                (usersSiseases.get(0)).getSpecialistType() + "    <br>    ";
-
-        for (int i = 1; i < usersSiseases.size(); i++) {
-            resp = resp + "Возможно вы страдаете от болезни под названием " +
-                    (usersSiseases.get(i)).getDiseaseName() +
+        if (usersSiseases.size() != 0) {
+            resp = "Возможно вы страдаете от болезни под названием " +
+                    (usersSiseases.get(0)).getDiseaseName() +
                     " советуем вам обратиться к специалисту с специализацией " +
-                    (usersSiseases.get(i)).getSpecialistType() + "    <br>    ";
-        }
+                    (usersSiseases.get(0)).getSpecialistType() + "    <br>    ";
+
+            for (int i = 1; i < usersSiseases.size(); i++) {
+                resp = resp + "Возможно вы страдаете от болезни под названием " +
+                        (usersSiseases.get(i)).getDiseaseName() +
+                        " советуем вам обратиться к специалисту с специализацией " +
+                        (usersSiseases.get(i)).getSpecialistType() + "    <br>    ";
+            }
+        } else resp = "К сожалению болезни по заданным " +
+                "симптомам пока отсутствуют в нашей базе, " +
+                "попробуйте другие зназвания ваших симптомов или " +
+                "обратитесь к инструкции по правильному названию ваших симптомов";
+
 
         logger.info("строка ответ= " + resp.toString());
 
