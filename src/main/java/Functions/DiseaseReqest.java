@@ -38,28 +38,37 @@ public class DiseaseReqest extends APIHandlerServlet.APIRequestHandler {
         JSONObject jsonObject = new JSONObject();
         String resp = null;
         ArrayList symptomList = new ArrayList();
-        List<Disease> usersSiseases = null;
-
+        List<Disease> userDiseases = null;
+        String posib = null;
 
         for (int i = 1; i <= 5; i++) {
             symptomList.add(request.getParameter("symptom" + i));
             System.out.println(symptomList.toString());
         }
-        usersSiseases = engine.findUserDisease(symptomList);
+        userDiseases = engine.findUserDisease(symptomList);
+        for (int i = 0; i < userDiseases.size(); i++) {
+            for (int j = 1; j < userDiseases.size(); j++) {
+                if (userDiseases.get(i).getDiseaseName().equals(userDiseases.get(j).getDiseaseName())) {
+                    posib = userDiseases.get(i).getDiseaseName() + " вероятность удвоена";
+
+                }
+            }
+        }
+
         logger.info("симптом лист: " + symptomList.toString());
-        logger.info("болезни: " + usersSiseases.toString());
+        logger.info("болезни: " + userDiseases.toString());
 
-        if (usersSiseases.size() != 0) {
-            resp = "Возможно вы страдаете от болезни под названием " +
-                    (usersSiseases.get(0)).getDiseaseName() +
+        if (userDiseases.size() != 0) {
+            resp = posib + "Возможно вы страдаете от болезни под названием " +
+                    (userDiseases.get(0)).getDiseaseName() +
                     " советуем вам обратиться к специалисту с специализацией " +
-                    (usersSiseases.get(0)).getSpecialistType() + "    <br>    ";
+                    (userDiseases.get(0)).getSpecialistType() + "    <br>    ";
 
-            for (int i = 1; i < usersSiseases.size(); i++) {
+            for (int i = 1; i < userDiseases.size(); i++) {
                 resp = resp + "Возможно вы страдаете от болезни под названием " +
-                        (usersSiseases.get(i)).getDiseaseName() +
+                        (userDiseases.get(i)).getDiseaseName() +
                         " советуем вам обратиться к специалисту с специализацией " +
-                        (usersSiseases.get(i)).getSpecialistType() + "    <br>    ";
+                        (userDiseases.get(i)).getSpecialistType() + "    <br>    ";
             }
         } else resp = "К сожалению болезни по заданным " +
                 "симптомам пока отсутствуют в нашей базе, " +

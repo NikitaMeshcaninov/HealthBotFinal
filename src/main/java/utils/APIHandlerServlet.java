@@ -2,6 +2,7 @@ package utils;
 
 import Functions.DiseaseReqest;
 import Functions.Login;
+import Functions.Registration;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONStreamAware;
 
@@ -34,6 +35,7 @@ public class APIHandlerServlet extends HttpServlet {
     static {
         Map<String, APIRequestHandler> map = new HashMap<>();
 
+        map.put("registration", Registration.getInstance());
         map.put("login", Login.getInstance());
         map.put("diseaserequest", DiseaseReqest.getInstance());
 

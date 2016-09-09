@@ -113,6 +113,10 @@ body {
     -webkit-box-shadow: none;
     box-shadow: none;
 }
+#map{
+    width: 750px;
+    height: 500px;
+}
 
 /*----------------------------------------------------*/
 /*----------------- Testimonials CSS -----------------*/
