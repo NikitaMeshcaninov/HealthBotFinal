@@ -1,6 +1,7 @@
 package engine;
 
 
+import Functions.Registration;
 import entities.Conection;
 import entities.Disease;
 import entities.Symptom;
@@ -104,8 +105,9 @@ public class HealthEngine {
 
 
         for (int i = 1; symptomNameList.size() > i; i++) {
-            if (!symptomNameList.get(i).equals("")){
-            symptomName = symptomName + " OR symptom.symptomName = '" + symptomNameList.get(i) + "'";}
+            if (!symptomNameList.get(i).equals("")) {
+                symptomName = symptomName + " OR symptom.symptomName = '" + symptomNameList.get(i) + "'";
+            }
         }
         System.out.println(symptomName.toString());
         try {
@@ -139,23 +141,21 @@ public class HealthEngine {
         return md5Hex;
     }
 
-    public void addUser() throws SQLException {
+    public void addUser(String email, String password) throws SQLException {
         HibernateUtil.init();
         User user = new User();
-        System.out.println("Введите email");
-        Scanner sc1 = new Scanner(System.in);
-        user.setEmail(sc1.next());
-        System.out.println("Введите пароль");
-        Scanner sc2 = new Scanner(System.in);
-        user.setPassword(md5Apache(sc2.next()));
-        System.out.println("Админ ? (true/false)");
-        Scanner sc3 = new Scanner(System.in);
-        user.setAdmin(sc3.nextBoolean());
+        user.setEmail(email);
+        user.setPassword(password);
+        user.setAdmin(false);
+        String tokenString = user.getEmail() + (Math.random() * System.currentTimeMillis());
+        String md5Hex = DigestUtils.md5Hex(tokenString);
+        user.setToken(md5Hex);
         System.out.println(user.toString());
         UserDaoImpl userDaoImpl = new UserDaoImpl();
         userDaoImpl.addUser(user);
         String id = Long.toString(user.getId());
         System.out.println("id нового пользователя: " + id);
+        Registration.cookie = user.getToken();
     }
 }
 

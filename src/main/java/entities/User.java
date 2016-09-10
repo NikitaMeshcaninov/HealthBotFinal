@@ -19,11 +19,14 @@ public class User {
     private String password;
     @Column (name = "isAdmin")
     private boolean isAdmin;
+    @Column (name = "token")
+    private String token;
 
-    public User(String email, String password, boolean isAdmin) {
+    public User(String email, String password, boolean isAdmin, String token) {
         this.email = email;
         this.password = password;
         this.isAdmin = isAdmin;
+        this.token = token;
     }
 
     public User() {
@@ -61,6 +64,14 @@ public class User {
         isAdmin = admin;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -68,6 +79,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", isAdmin=" + isAdmin +
+                ", token='" + token + '\'' +
                 '}';
     }
 }

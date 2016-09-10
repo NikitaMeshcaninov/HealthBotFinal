@@ -1,5 +1,6 @@
 package Functions;
 
+import engine.HealthEngine;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONStreamAware;
@@ -20,17 +21,23 @@ public class Registration extends APIHandlerServlet.APIRequestHandler {
         return instance;
     }
 
+    public static String cookie = null;
+
     private Registration() {
     }
 
     @Override
     protected JSONStreamAware processRequest(HttpServletRequest request) throws Exception {
 
+        HealthEngine engine = new HealthEngine();
+        engine.addUser(request.getParameter("email"), request.getParameter("password"));
+
         JSONObject jsonObject = new JSONObject();
 
         logger.info("!!!! Password from HTTP!!!! " + request.getParameter("password"));
 
-        jsonObject.put("resp", "some resp from login");
+        jsonObject.put("value", cookie);
+        jsonObject.put("name", "token");
 
         return jsonObject;
     }

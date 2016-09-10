@@ -122,7 +122,8 @@ var main = {
             dataType: "json",
             data: {requestType: "registration", password: pass, email: mail},
             success: function (data) {
-                console.log(data.resp);
+                alert(data.value);
+                main.setcookie(data.value);
             }
         });
 
@@ -167,6 +168,10 @@ var main = {
                 console.log(data.requestProcessingTime);
             }
         });
+    },
+    setcookie: function (value) {
+        document.cookie = value;
     }
+
 };
 
