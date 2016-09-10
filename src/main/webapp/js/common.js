@@ -122,8 +122,10 @@ var main = {
             dataType: "json",
             data: {requestType: "registration", password: pass, email: mail},
             success: function (data) {
-                alert(data.value);
+                
                 main.setcookie(data.value);
+                $('#myModal1').modal('hide');
+
             }
         });
 
@@ -140,6 +142,7 @@ var main = {
             data: {requestType: "login", login: log, password: pass},
             success: function (data) {
                 console.log(data.resp);
+                $('#myModal').modal('hide');
             }
         });
     }

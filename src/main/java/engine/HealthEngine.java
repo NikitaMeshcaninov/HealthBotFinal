@@ -2,10 +2,7 @@ package engine;
 
 
 import Functions.Registration;
-import entities.Conection;
-import entities.Disease;
-import entities.Symptom;
-import entities.User;
+import entities.*;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.hibernate.Session;
 import org.hibernate.transform.Transformers;
@@ -156,6 +153,7 @@ public class HealthEngine {
         String id = Long.toString(user.getId());
         System.out.println("id нового пользователя: " + id);
         Registration.cookie = user.getToken();
+        CurrentUser.currentUser = user;
     }
 }
 
