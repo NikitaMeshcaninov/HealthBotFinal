@@ -105,7 +105,6 @@ $(document).ready(function () {
 
 var main = {
     registration: function () {
-        alert("here");
         var mail = document.getElementById("email_for_reg").value;
         var pass1 = document.getElementById("password_for_reg").value;
         var pass2 = document.getElementById("password_for_reg_again").value;
@@ -125,7 +124,9 @@ var main = {
                 
                 main.setcookie(data.value);
                 $('#myModal1').modal('hide');
-
+                $('#user_login_block').hide();
+                $('#user_name').show();
+                $('#user_name').text(mail);
             }
         });
 
@@ -143,8 +144,16 @@ var main = {
             success: function (data) {
                 console.log(data.resp);
                 $('#myModal').modal('hide');
+                $('#user_login_block').hide();
             }
         });
+    }
+    ,
+
+    log_out: function () {
+        $('#user_login_block').show();
+        $('#user_name').hide();
+        main.deletecookie();
     }
     ,
 
@@ -174,7 +183,12 @@ var main = {
     },
     setcookie: function (value) {
         document.cookie = value;
-    }
+    },
+    deletecookie: function deleteCookie(name) {
+    setCookie(name, "", {
+        expires: -1
+    })
+}
 
 };
 
