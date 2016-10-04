@@ -1,6 +1,8 @@
-package engine;
+package main.java.engine;
 
-import entities.User;
+
+
+import main.java.entities.User;
 
 import java.sql.SQLException;
 import java.util.List;

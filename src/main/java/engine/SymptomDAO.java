@@ -1,8 +1,10 @@
-package engine;
+package main.java.engine;
 
 
 
-import entities.Symptom;
+
+
+import main.java.entities.Symptom;
 
 import java.sql.SQLException;
 import java.util.List;

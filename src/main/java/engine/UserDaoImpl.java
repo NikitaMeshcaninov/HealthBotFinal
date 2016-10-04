@@ -1,9 +1,10 @@
-package engine;
+package main.java.engine;
 
 
-import entities.User;
+import main.java.entities.User;
+import main.java.utils.HibernateUtil;
 import org.hibernate.Session;
-import utils.HibernateUtil;
+
 
 
 import javax.swing.*;

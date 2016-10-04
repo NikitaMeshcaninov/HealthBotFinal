@@ -1,4 +1,4 @@
-package utils;
+package main.java.utils;
 
 import org.json.simple.JSONObject;
 import org.json.simple.JSONStreamAware;

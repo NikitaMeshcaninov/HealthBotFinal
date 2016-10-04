@@ -1,9 +1,10 @@
-package engine;
+package main.java.engine;
 
-import entities.Disease;
+import main.java.entities.Disease;
+import main.java.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.mapping.List;
-import utils.HibernateUtil;
+
 
 import javax.swing.*;
 import java.sql.SQLException;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 /**
  * Created by Nikita on 27.07.2016.
  */
-public class DiseaseDAOimpl implements DiseaseDAO {
+public class DiseaseDAOimpl implements main.java.engine.DiseaseDAO {
     @Override
     public void addDisease(Disease disease) throws SQLException {
         Session session = null;

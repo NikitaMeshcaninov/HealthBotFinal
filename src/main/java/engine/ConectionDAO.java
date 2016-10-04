@@ -1,7 +1,9 @@
-package engine;
+package main.java.engine;
 
 
-import entities.Conection;
+
+
+import main.java.entities.Conection;
 
 import java.sql.SQLException;
 

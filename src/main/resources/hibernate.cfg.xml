@@ -15,10 +15,10 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
 
-        <mapping class="entities.Disease" />
-        <mapping class="entities.Symptom" />
-        <mapping class="entities.Conection" />
-        <mapping class="entities.User" />
+        <mapping class="main.java.entities.Disease" />
+        <mapping class="main.java.entities.Symptom" />
+        <mapping class="main.java.entities.Conection" />
+        <mapping class="main.java.entities.User" />
 
     </session-factory>
 </hibernate-configuration>

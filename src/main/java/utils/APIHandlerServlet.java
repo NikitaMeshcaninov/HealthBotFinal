@@ -1,8 +1,9 @@
-package utils;
+package main.java.utils;
 
-import Functions.DiseaseReqest;
-import Functions.Login;
-import Functions.Registration;
+
+import main.java.functions.DiseaseReqest;
+import main.java.functions.Login;
+import main.java.functions.Registration;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONStreamAware;
 
@@ -17,7 +18,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import static utils.APIServlet.ERROR_INCORRECT_REQUEST;
+import static main.java.utils.JSONResponses.ERROR_INCORRECT_REQUEST;
 
 /**
  * Created by Nikita on 29.08.2016.

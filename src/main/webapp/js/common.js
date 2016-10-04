@@ -145,6 +145,8 @@ var main = {
                 console.log(data.resp);
                 $('#myModal').modal('hide');
                 $('#user_login_block').hide();
+                $('#user_name').show();
+                $('#user_name').text(mail);
             }
         });
     }

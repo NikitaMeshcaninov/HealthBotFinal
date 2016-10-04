@@ -1,4 +1,4 @@
-package entities;
+package main.java.entities;
 
 /**
  * Created by Nikita on 11.08.2016.

@@ -1,12 +1,14 @@
-package engine;
+package main.java.engine;
 
 
-import Functions.Registration;
-import entities.*;
+
+import main.java.entities.*;
+import main.java.functions.Registration;
+import main.java.utils.HibernateUtil;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.hibernate.Session;
 import org.hibernate.transform.Transformers;
-import utils.HibernateUtil;
+
 
 import javax.swing.*;
 import java.sql.SQLException;
@@ -155,5 +157,29 @@ public class HealthEngine {
         Registration.cookie = user.getToken();
         CurrentUser.currentUser = user;
     }
+
+    public User getUserByName(String name) {
+        Session session = null;
+        List t = null;
+
+        try {
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+            t = session.createSQLQuery("SELECT user.id, user.email, user.password, user.isAdmin" +
+                    "WHERE email =" + name)
+                    .setResultTransformer(Transformers.aliasToBean(User.class))
+                    .list();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "ошибка I/O", JOptionPane.OK_OPTION);
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        System.out.println((User) t.get(0));
+        return (User) t.get(0);
+    }
+
 }
 

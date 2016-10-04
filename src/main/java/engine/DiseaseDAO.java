@@ -1,6 +1,7 @@
-package engine;
+package main.java.engine;
 
-import entities.Disease;
+
+import main.java.entities.Disease;
 import org.hibernate.mapping.List;
 
 import java.sql.SQLException;

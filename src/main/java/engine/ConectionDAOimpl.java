@@ -1,8 +1,11 @@
-package engine;
+package main.java.engine;
 
-import entities.Conection;
+
+import main.java.entities.Conection;
+import main.java.utils.HibernateUtil;
 import org.hibernate.Session;
-import utils.HibernateUtil;
+
+
 
 import javax.swing.*;
 import java.sql.SQLException;

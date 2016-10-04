@@ -1,9 +1,10 @@
-package engine;
+package main.java.engine;
 
 
-import entities.Symptom;
+
+import main.java.entities.Symptom;
+import main.java.utils.HibernateUtil;
 import org.hibernate.Session;
-import utils.HibernateUtil;
 
 import javax.swing.*;
 import java.sql.SQLException;
